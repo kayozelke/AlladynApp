@@ -24,7 +24,7 @@ def getImageFromHttpResponse(http_address, output_file_location):
 
 def test():
     CAM_ADDRESS = "192.168.1.10"
-    IMAGES_DIR = "images"
+    IMAGES_DIR = os.path.join(os.getcwd(), "images")
 
     if not os.path.isdir(IMAGES_DIR):
         try:
@@ -34,7 +34,8 @@ def test():
             exit(1)
 
     for i in range(0,10):
-        PATH = f"{IMAGES_DIR}/image_{str(i)}.jpg"
+        print(IMAGES_DIR)
+        PATH = os.path.join(IMAGES_DIR, f"image_{str(i)}.jpg")
         getImageFromHttpResponse(f'http://{CAM_ADDRESS}/capture', PATH)
 
 
