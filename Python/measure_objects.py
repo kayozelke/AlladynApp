@@ -10,7 +10,7 @@ from imutils import contours
 import numpy as np
 import imutils
 import cv2
-from PIL import Image
+# from PIL import Image
 
 # Function to show array of images (intermediate results)
 def show_images(images):
@@ -41,7 +41,16 @@ def getContoursSortedFromImage(img_path):
 	blur = cv2.GaussianBlur(gray, (9,9), 0)
 	# blur = cv2.GaussianBlur(gray, (3, 3), 0)
 
-	edged = cv2.Canny(blur, 40, 200, apertureSize=3, L2gradient=False)
+
+	# compute the median of the single channel pixel intensities
+	v = np.median(image)
+	# apply automatic Canny edge detection using the computed median
+	sigma = 0.33
+	lower = int(max(0, (1.0 - sigma) * v))
+	upper = int(min(255, (1.0 + sigma) * v))
+ 
+	edged = cv2.Canny(blur, lower, upper, apertureSize=3, L2gradient=False)
+	# edged = cv2.Canny(blur, 40, 200, apertureSize=3, L2gradient=False)
 	edged = cv2.dilate(edged, None, iterations=1)
 	edged = cv2.erode(edged, None, iterations=1)
 
@@ -77,24 +86,24 @@ def addContoursAndSizesToImage(numpy_ndarray_image, cnt, pixel_per_cm):
 	return numpy_ndarray_image
 	
 
-def measureLargestObjectByReference(cnts, reference_object_width_in_cm, input_img_path = None, output_img_path = None):
-	# porzucmy te funkcje
-	pixel_per_cm = getPixelPerCmByReferenceObject(cnts, reference_object_width_in_cm)
+# def measureLargestObjectByReference(cnts, reference_object_width_in_cm, input_img_path = None, output_img_path = None):
+# 	# porzucmy te funkcje
+# 	pixel_per_cm = getPixelPerCmByReferenceObject(cnts, reference_object_width_in_cm)
 	
 	
-	largest_object = max(cnts, key=cv2.contourArea)
-	largest_object_width, largest_object_height = getWidthAndHeightFromContours(largest_object,pixel_per_cm=pixel_per_cm)
+# 	largest_object = max(cnts, key=cv2.contourArea)
+# 	largest_object_width, largest_object_height = getWidthAndHeightFromContours(largest_object,pixel_per_cm=pixel_per_cm)
 
-	if input_img_path and output_img_path:
+# 	if input_img_path and output_img_path:
 
-		image = cv2.imread(input_img_path)
-		for cnt in cnts:
-			image = addContoursAndSizesToImage(image, cnt, pixel_per_cm)
+# 		image = cv2.imread(input_img_path)
+# 		for cnt in cnts:
+# 			image = addContoursAndSizesToImage(image, cnt, pixel_per_cm)
 
-		# show_images([image])
-		cv2.imwrite(output_img_path, image) 
+# 		# show_images([image])
+# 		cv2.imwrite(output_img_path, image) 
 
-	return [largest_object_height, largest_object_width]
+# 	return [largest_object_height, largest_object_width]
 
 def getPixelPerCmByReferenceObject(cnts, reference_object_width_in_cm):
 	if len(cnts) < 1:
@@ -111,10 +120,22 @@ def getPixelPerCmByReferenceObject(cnts, reference_object_width_in_cm):
 
 	return pixel_per_cm
 
+def getPixelPerCmByImageWidth(image_file : str, real_visible_range_in_cm):
+	im = cv2.imread(image_file)
+	_, width, _ = im.shape
+	return width / real_visible_range_in_cm
+
+def getPixelPerCmByImageHeight(image_file : str, real_visible_range_in_cm):
+	im = cv2.imread(image_file)
+	height, _, _ = im.shape
+	return height / real_visible_range_in_cm
+
 
 def measureEveryObject(cnts, pixel_per_cm, input_img_path = None, output_img_path = None):
 	if len(cnts) < 1:
 		return None
+	
+	print("X")
 
 	returnArray = []
 
@@ -135,12 +156,24 @@ def measureEveryObject(cnts, pixel_per_cm, input_img_path = None, output_img_pat
 	return returnArray
 
 
-cnts = getContoursSortedFromImage("obraz.jpg")
 
-return_data = measureLargestObjectByReference(cnts, 10, "obraz.jpg", "output1.png")
+# my_img = "obraz.jpg"
+# my_img = "image_344.jpg"
+my_img = "image_961.jpg"
+# my_img = "image_880.jpg"
+cnts = getContoursSortedFromImage(my_img)
+
+# return_data = measureLargestObjectByReference(cnts, 10, "obraz.jpg", "output1.png")
+# print(return_data)
+# print("----")
+
+pixel_per_cm = getPixelPerCmByImageWidth(my_img, 200)
+# pixel_per_cm = getPixelPerCmByImageHeight(my_img, 140)
+
+return_data = measureEveryObject(cnts, pixel_per_cm, my_img, "output2.png")
 print(return_data)
-print("----")
-return_data = measureEveryObject(cnts, 1, "obraz.jpg", "output2.png")
-print(return_data)
+
+
+
 
 exit()
