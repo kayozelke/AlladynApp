@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "313969797368",
+    "project_id": "alladyn-91bcc",
+    "storage_bucket": "alladyn-91bcc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:313969797368:android:9d79962806c419e54fb30d",
+        "android_client_info": {
+          "package_name": "com.example.alladyn"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB9dBbt3gjkyxPufFjv-RXNJIrG8wYSuH4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
