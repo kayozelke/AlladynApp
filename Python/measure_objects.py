@@ -19,7 +19,7 @@ def show_images(images):
 	cv2.waitKey(0)
 	cv2.destroyAllWindows()
 	
-def getWidthAndHeightFromContours(cnt, pixel_per_cm):
+def getWidthAndHeightFromContours(cnt, pixel_per_cm : int | float):
 	
 	box = cv2.minAreaRect(cnt)
 	box = cv2.boxPoints(box)
@@ -68,7 +68,7 @@ def getContoursSortedFromImage(img_path):
 	cnts = [x for x in cnts if cv2.contourArea(x) > 100]
 	return cnts
 
-def addContoursAndSizesToImage(numpy_ndarray_image, cnt, pixel_per_cm):
+def addSingleCntAndSizesToImage(numpy_ndarray_image, cnt, pixel_per_cm : int | float):
 	box = cv2.minAreaRect(cnt)
 	box = cv2.boxPoints(box)
 	box = np.array(box, dtype="int")
@@ -86,24 +86,6 @@ def addContoursAndSizesToImage(numpy_ndarray_image, cnt, pixel_per_cm):
 	return numpy_ndarray_image
 	
 
-# def measureLargestObjectByReference(cnts, reference_object_width_in_cm, input_img_path = None, output_img_path = None):
-# 	# porzucmy te funkcje
-# 	pixel_per_cm = getPixelPerCmByReferenceObject(cnts, reference_object_width_in_cm)
-	
-	
-# 	largest_object = max(cnts, key=cv2.contourArea)
-# 	largest_object_width, largest_object_height = getWidthAndHeightFromContours(largest_object,pixel_per_cm=pixel_per_cm)
-
-# 	if input_img_path and output_img_path:
-
-# 		image = cv2.imread(input_img_path)
-# 		for cnt in cnts:
-# 			image = addContoursAndSizesToImage(image, cnt, pixel_per_cm)
-
-# 		# show_images([image])
-# 		cv2.imwrite(output_img_path, image) 
-
-# 	return [largest_object_height, largest_object_width]
 
 def getPixelPerCmByReferenceObject(cnts, reference_object_width_in_cm):
 	if len(cnts) < 1:
@@ -131,49 +113,62 @@ def getPixelPerCmByImageHeight(image_file : str, real_visible_range_in_cm):
 	return height / real_visible_range_in_cm
 
 
-def measureEveryObject(cnts, pixel_per_cm, input_img_path = None, output_img_path = None):
-	if len(cnts) < 1:
-		return None
-	
-	print("X")
-
+def measureEveryObject(cnts, pixel_per_cm : int | float):
 	returnArray = []
+	
+	if len(cnts) < 1:
+		print("Warning from 'measureEveryObject()': No contours provided!")
+		return returnArray
 
 	for cnt in cnts:
 		cnt_width, cnt_height = getWidthAndHeightFromContours(cnt,pixel_per_cm=pixel_per_cm)
 		returnArray.append([cnt_width, cnt_height])
-	
-
-	if input_img_path and output_img_path:
-
-		image = cv2.imread(input_img_path)
-		for cnt in cnts:
-			image = addContoursAndSizesToImage(image, cnt, pixel_per_cm)
-
-		# show_images([image])
-		cv2.imwrite(output_img_path, image) 
 
 	return returnArray
 
+def addAllCntsAndSizesToImage(cnts, pixel_per_cm : int | float, input_img_path : str, output_img_path : str):
+	image = cv2.imread(input_img_path)
+	for cnt in cnts:
+		image = addSingleCntAndSizesToImage(image, cnt, pixel_per_cm)
 
-
-# my_img = "obraz.jpg"
-# my_img = "image_344.jpg"
-my_img = "image_961.jpg"
-# my_img = "image_880.jpg"
-cnts = getContoursSortedFromImage(my_img)
-
-# return_data = measureLargestObjectByReference(cnts, 10, "obraz.jpg", "output1.png")
-# print(return_data)
-# print("----")
-
-pixel_per_cm = getPixelPerCmByImageWidth(my_img, 200)
-# pixel_per_cm = getPixelPerCmByImageHeight(my_img, 140)
-
-return_data = measureEveryObject(cnts, pixel_per_cm, my_img, "output2.png")
-print(return_data)
+	# show_images([image])
+	cv2.imwrite(output_img_path, image) 
 
 
 
+def test():
+	# my_img = "images/sowa.jpg"
+	# my_img = "images/blady.jpg"
+	# my_img = "images/wzorek.jpg"
+	my_img = "images/2_obj.jpg"
+	output_img = "output.jpg"
 
-exit()
+	REAL_WIDTH_CM = 200
+	# REAL_HEIGHT_CM = 140
+
+	PIXEL_PER_CM = getPixelPerCmByImageWidth(my_img, REAL_WIDTH_CM)
+	# PIXEL_PER_CM = getPixelPerCmByImageHeight(my_img, REAL_HEIGHT_CM)
+	
+	# get contours
+	# if not found any, object type is None
+	cnts = getContoursSortedFromImage(my_img)
+
+	addAllCntsAndSizesToImage(cnts, PIXEL_PER_CM, my_img, output_img)
+
+
+	measured_obj_list = measureEveryObject(cnts, PIXEL_PER_CM)
+
+	# measured_obj_list looks like below
+	#  [[x1,y1], [x2,y2], ...]
+	# for ex.:
+	#	 [
+	#	 	[10.0,15.0], <-- first object
+	#	 	[20.5,10.0]  <-- another object
+	#	 ]
+	# or single-object-example: [10.0,15.0]
+	# if not found object is []
+	
+	print(measured_obj_list)
+	return
+
+test()
