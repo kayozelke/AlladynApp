@@ -22,11 +22,13 @@ def getImageFromHttpResponse(http_address, output_file_location):
 
 
 def generateSamplePhotos(file_path):
-    CAM_ADDRESS = "192.168.1.10"
+    # CAM_ADDRESS = "192.168.1.10"
 
     for i in range(0,10):
         PATH = os.path.join(file_path, f"image_{str(i)}.jpg")
-        getImageFromHttpResponse(f'http://{CAM_ADDRESS}/capture', PATH)
+        # TODO
+        # getImageFromHttpResponse(f'http://{CAM_ADDRESS}/capture', PATH)
+        getImageFromHttpResponse(f'https://i.imgur.com/3BPH08K.jpeg', PATH)
 
     # PATH = os.path.join(file_path, "image.jpg")
     # getImageFromHttpResponse(f'http://{CAM_ADDRESS}/capture', PATH)
