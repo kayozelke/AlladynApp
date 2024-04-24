@@ -28,7 +28,7 @@ def generateSamplePhotos(file_path):
         PATH = os.path.join(file_path, f"image_{str(i)}.jpg")
         # TODO
         # getImageFromHttpResponse(f'http://{CAM_ADDRESS}/capture', PATH)
-        getImageFromHttpResponse(f'https://i.imgur.com/3BPH08K.jpeg', PATH)
+        getImageFromHttpResponse(f'https://i.postimg.cc/rp105wdT/wzorek.jpg', PATH)
 
     # PATH = os.path.join(file_path, "image.jpg")
     # getImageFromHttpResponse(f'http://{CAM_ADDRESS}/capture', PATH)
