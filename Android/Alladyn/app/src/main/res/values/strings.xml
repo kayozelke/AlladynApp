@@ -1,9 +1,28 @@
 <resources>
     <string name="app_name">Alladyn</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="nowe_zdjecie">NOWE ZDJĘCIE</string>
     <string name="odczytane_wymiary">Odczytane wymiary:</string>
     <string name="metraz">Metraż:</string>
     <string name="zatwierdz_dane">ZATWIERDŹ DANE</string>
+    <string name="len_text_string">%s</string>
+    <string name="wid_text_string">%s</string>
+    <string name="area_text_string">%s</string>
+    <string name="meter">m</string>
+    <string name="quadratic_meter">m<sup>2</sup></string>
+    <string name="question_measurements">Zbadane wymiary nie zgadzają się?\nWpisz swoje poniżej:</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="something_went_wrong_try_again">Coś poszło nie tak. Ponów próbę!</string>
+    <string name="check_entered_carpet_measurements">Sprawdź wprowadzone wymiary dywanu!</string>
+    <string name="data_of_current_carpet">Dane o aktualnie dodawanym dywanie:</string>
+    <string name="wymiary_s_m_x_s_m">Wymiary: %s m X %s m</string>
+    <string name="powierzchnia_s_m2">Powierzchnia: %s m<sup>2</sup></string>
+    <string name="w_jaki_sposob_dywan_zostal_przyjety_do_czyszczenia">W jaki sposób dywan został przyjęty do czyszczenia?</string>
+    <string name="cena_za_czyszczenie_metra_kw_dywanu_wynosi">Cena za czyszczenie metra kwadratowego tego dywanu\nwynosi: %s złotych.</string>
+    <string name="ostateczna_cena_tego_dywanu_wynosi_s_z_otych">Ostateczna cena tego dywanu wynosi: %s złotych.</string>
+    <string name="co_si_nie_zgadza_nwr_i_pon_w_pomiary">Coś się nie zgadza?\nWróć i ponów pomiary.</string>
+    <string name="wszystko_si_zgadza_nzatwierd_dywan_i_dodaj_go_do_bazy">Wszystko się zgadza?\nZatwierdź dywan i dodaj go do bazy.</string>
+    <string name="wr_do_pomiar_w">Wróć do pomiarów</string>
+    <string name="zatwierd_dywan">Zatwierdź dywan</string>
 </resources>

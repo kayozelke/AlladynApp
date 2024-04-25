@@ -1,8 +1,11 @@
+import org.jetbrains.kotlin.utils.addToStdlib.safeAs
+
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    id("androidx.navigation.safeargs.kotlin")
     id("com.chaquo.python")
-    id("com.google.gms.google-services")
+
 }
 
 android {
@@ -65,7 +68,10 @@ chaquopy {
         pip{
             install("requests")
             install("numpy")
-            install ("Pillow")
+            install("Pillow")
+            install("scipy")
+            install("opencv-python")
+            install("imutils")
         }
     }
     productFlavors { }

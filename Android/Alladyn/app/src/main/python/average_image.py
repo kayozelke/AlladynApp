@@ -12,7 +12,8 @@ def getAvgFromImages(images_directory_location, output_location):
             imlist.append(os.path.join(images_directory_location, filename))
 
     # Assuming all images are the same size, get dimensions of first image
-    w,h=Image.open(imlist[0]).size
+    with Image.open(imlist[0]) as img:
+        w, h = img.size
     N=len(imlist)
 
     # Create a numpy array of floats to store the average (assume RGB images)
@@ -29,8 +30,3 @@ def getAvgFromImages(images_directory_location, output_location):
     # Generate, save and preview final image
     out=Image.fromarray(arr,mode="RGB")
     out.save(output_location)
-
-
-IMAGES_DIR = os.path.join(os.getcwd(), "images")
-AVG_IMG_LOCATION = os.path.join(os.getcwd(), "average.png")
-# getAvgFromImages(IMAGES_DIR, AVG_IMG_LOCATION)

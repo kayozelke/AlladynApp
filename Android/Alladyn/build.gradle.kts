@@ -1,6 +1,10 @@
 buildscript {
+    repositories{
+        google()
+    }
     dependencies {
         classpath(libs.google.services)
+        classpath(libs.safe.args)
     }
 }
 // Top-level build file where you can add configuration options common to all sub-projects/modules.

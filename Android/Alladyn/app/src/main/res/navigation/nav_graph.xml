@@ -9,5 +9,50 @@
         android:id="@+id/takeCarpetPhotoFragment"
         android:name="com.example.alladyn.view.TakeCarpetPhotoFragment"
         android:label="fragment_take_carpet_photo"
-        tools:layout="@layout/fragment_take_carpet_photo" />
+        tools:layout="@layout/fragment_take_carpet_photo">
+        <action
+            android:id="@+id/action_takeCarpetPhotoFragment_to_enterCarpetDataAndSaveToDBFragment"
+            app:destination="@id/enterCarpetDataAndSaveToDBFragment">
+            <argument
+                android:name="carpetLength"
+                app:argType="float" />
+            <argument
+                android:name="carpetWidth"
+                app:argType="float" />
+            <argument
+                android:name="carpetArea"
+                app:argType="float" />
+            <argument
+                android:name="averageImageFilePath"
+                app:argType="string" />
+            <argument
+                android:name="measuredImageFilePath"
+                app:argType="string" />
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/enterCarpetDataAndSaveToDBFragment"
+        android:name="com.example.alladyn.view.EnterCarpetDataAndSaveToDBFragment"
+        android:label="fragment_enter_carpet_data_and_save_to_d_b"
+        tools:layout="@layout/fragment_enter_carpet_data_and_save_to_d_b" >
+        <argument
+            android:name="carpetLength"
+            app:argType="float" />
+        <argument
+            android:name="carpetWidth"
+            app:argType="float" />
+        <argument
+            android:name="carpetArea"
+            app:argType="float" />
+        <argument
+            android:name="averageImageFilePath"
+            app:argType="string" />
+        <argument
+            android:name="measuredImageFilePath"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_enterCarpetDataAndSaveToDBFragment_to_takeCarpetPhotoFragment"
+            app:destination="@id/takeCarpetPhotoFragment" />
+    </fragment>
 </navigation>
