@@ -12,14 +12,14 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="2"
-        android:background="@drawable/red_300_rounded_linear_layout_style"
+        android:background="@drawable/red_700_rounded_linear_layout_style"
         android:orientation="vertical"
         android:padding="16dp">
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="3"
+            android:layout_weight="5"
             android:orientation="horizontal">
 
             <androidx.appcompat.widget.AppCompatImageView
@@ -42,27 +42,35 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="2"
-            android:orientation="vertical">
+            android:background="@drawable/red_300_rounded_linear_layout_style"
+            android:orientation="vertical"
+            android:padding="16dp">
 
             <com.google.android.material.textview.MaterialTextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="2"
                 android:padding="6dp"
-                android:text="@string/data_of_current_carpet" />
+                android:text="@string/data_of_current_carpet"
+                android:textSize="20sp" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/current_carpet_measures_textview"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
                 android:padding="6dp"
-                android:text="@string/wymiary_s_m_x_s_m" />
+                android:text="@string/wymiary_s_m_x_s_m"
+                android:textSize="20sp" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/current_carpet_area_textview"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
                 android:padding="6dp"
-                android:text="@string/powierzchnia_s_m2" />
+                android:text="@string/powierzchnia_s_m2"
+                android:textSize="20sp" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -73,56 +81,202 @@
         android:layout_height="match_parent"
         android:layout_marginStart="16dp"
         android:layout_weight="3"
-        android:background="@drawable/red_300_rounded_linear_layout_style"
+        android:background="@drawable/red_700_rounded_linear_layout_style"
         android:orientation="vertical"
         android:padding="16dp">
 
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:gravity="bottom"
             android:padding="6dp"
-            android:text="@string/w_jaki_sposob_dywan_zostal_przyjety_do_czyszczenia" />
+            android:text="@string/w_jaki_sposob_dywan_zostal_przyjety_do_czyszczenia"
+            android:textSize="20sp" />
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/service_type_linear_layout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal" >
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/individual_service_type_button"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
                 android:layout_weight="1"
-                android:text="Odbiór od klienta prywatnego"/>
+                android:minHeight="48dp"
+                android:text="@string/odbi_r_od_klienta_prywatnego" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/partner_service_type_button"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:text="Odbiór od partnera firmy"
-                android:layout_weight="1"/>
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:minHeight="48dp"
+                android:text="@string/odbi_r_od_partnera_firmy" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/add_contact_data_lin_layout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="bottom"
+                android:padding="6dp"
+                android:text="@string/dodaj_dane_kontaktowe"
+                android:textSize="20sp" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/owner_surname_text_input"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/red_300_rounded_linear_layout_style"
+                    android:hint="@string/nazwisko"
+                    android:minHeight="16sp"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp" />
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/owner_phone_number_text_input"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
+                    android:inputType="phone"
+                    android:background="@drawable/red_300_rounded_linear_layout_style"
+                    android:hint="@string/nr_telefonu"
+                    android:minHeight="16sp"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/add_pickup_point_lin_layout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="bottom"
+                android:padding="6dp"
+                android:text="@string/wybierz_punkt_odbioru_dywanu"
+                android:textSize="20sp" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/pickup_point_1_button"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
+                    android:text="@string/punkt_1" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/pickup_point_2_button"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
+                    android:text="@string/punkt_2" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/pickup_point_3_button"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
+                    android:text="@string/punkt_3" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/carpet_number_text_input"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@drawable/red_300_rounded_linear_layout_style"
+                android:hint="@string/nr_dywanu"
+                android:inputType="text"
+                android:minHeight="16sp"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/carpet_meter_price_textview"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:gravity="center_vertical"
             android:padding="6dp"
-            android:text="@string/cena_za_czyszczenie_metra_kw_dywanu_wynosi" />
+            android:text="@string/cena_za_czyszczenie_metra_kw_dywanu_wynosi"
+            android:textSize="20sp"
+            android:visibility="invisible" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/final_carpet_price_textview"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:background="@drawable/red_300_rounded_linear_layout_style"
+            android:gravity="center_vertical"
             android:padding="6dp"
-            android:text="@string/ostateczna_cena_tego_dywanu_wynosi_s_z_otych" />
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:text="@string/ostateczna_cena_tego_dywanu_wynosi_s_z_otych"
+            android:textSize="20sp"
+            android:visibility="invisible" />
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_gravity="bottom"
+            android:layout_weight="5"
+            android:gravity="bottom"
             android:orientation="vertical">
 
             <androidx.appcompat.widget.LinearLayoutCompat
@@ -132,20 +286,26 @@
                 android:orientation="horizontal">
 
                 <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/everything_good_textview"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="bottom"
                     android:padding="6dp"
-                    android:text="@string/co_si_nie_zgadza_nwr_i_pon_w_pomiary" />
+                    android:text="@string/co_si_nie_zgadza_nwr_i_pon_w_pomiary"
+                    android:textSize="20sp"
+                    android:visibility="invisible" />
 
                 <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/back_to_measure_textview"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="bottom"
                     android:padding="6dp"
-                    android:text="@string/wszystko_si_zgadza_nzatwierd_dywan_i_dodaj_go_do_bazy" />
+                    android:text="@string/wszystko_si_zgadza_nzatwierd_dywan_i_dodaj_go_do_bazy"
+                    android:textSize="20sp"
+                    android:visibility="invisible" />
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -156,18 +316,24 @@
                 android:orientation="horizontal">
 
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/back_to_carper_measures_button"
+                    android:id="@+id/back_to_carpet_measures_button"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
                     android:layout_weight="1"
-                    android:text="@string/wr_do_pomiar_w" />
+                    android:text="@string/wr_do_pomiar_w"
+                    android:visibility="invisible" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/save_carpet_to_db_button"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
                     android:layout_weight="1"
-                    android:text="@string/zatwierd_dywan" />
+                    android:text="@string/zatwierd_dywan"
+                    android:visibility="invisible" />
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 

@@ -1,5 +1,6 @@
 package com.example.alladyn.datasource
 
+import com.example.alladyn.model.CarpetModel
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.database.DatabaseReference
@@ -13,9 +14,5 @@ class DatabaseHandler {
         // Get the database reference for all-users level
         return firebaseDatabase.reference
     }
-
-//    fun saveCarpetToDatabase():{
-//
-//    }
 
 }

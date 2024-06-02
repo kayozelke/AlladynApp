@@ -35,7 +35,7 @@
         android:id="@+id/enterCarpetDataAndSaveToDBFragment"
         android:name="com.example.alladyn.view.EnterCarpetDataAndSaveToDBFragment"
         android:label="fragment_enter_carpet_data_and_save_to_d_b"
-        tools:layout="@layout/fragment_enter_carpet_data_and_save_to_d_b" >
+        tools:layout="@layout/fragment_enter_carpet_data_and_save_to_d_b">
         <argument
             android:name="carpetLength"
             app:argType="float" />
@@ -53,6 +53,38 @@
             app:argType="string" />
         <action
             android:id="@+id/action_enterCarpetDataAndSaveToDBFragment_to_takeCarpetPhotoFragment"
+            app:destination="@id/takeCarpetPhotoFragment" />
+        <action
+            android:id="@+id/action_enterCarpetDataAndSaveToDBFragment_to_takeCarpetPhotoAfterCleaningFragment"
+            app:destination="@id/takeCarpetPhotoAfterCleaningFragment">
+            <argument
+                android:name="carpetID"
+                app:argType="long" />
+        </action>
+    </fragment>
+    <fragment
+        android:id="@+id/takeCarpetPhotoAfterCleaningFragment"
+        android:name="com.example.alladyn.view.TakeCarpetPhotoAfterCleaningFragment"
+        android:label="fragment_take_carpet_photo_after_cleaning"
+        tools:layout="@layout/fragment_take_carpet_photo_after_cleaning">
+        <argument
+            android:name="carpetID"
+            app:argType="long" />
+        <action
+            android:id="@+id/action_takeCarpetPhotoAfterCleaningFragment_to_takeCarpetPhotoFragment"
+            app:destination="@id/takeCarpetPhotoFragment" />
+        <action
+            android:id="@+id/action_takeCarpetPhotoAfterCleaningFragment_to_mainMenuFragment"
+            app:destination="@id/mainMenuFragment" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/mainMenuFragment"
+        android:name="com.example.alladyn.view.MainMenuFragment"
+        android:label="fragment_main_menu"
+        tools:layout="@layout/fragment_main_menu" >
+        <action
+            android:id="@+id/action_mainMenuFragment_to_takeCarpetPhotoFragment"
             app:destination="@id/takeCarpetPhotoFragment" />
     </fragment>
 </navigation>
