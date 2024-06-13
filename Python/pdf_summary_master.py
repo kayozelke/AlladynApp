@@ -26,9 +26,10 @@ def getTimestampNow():
 
 def loadCarpets(input_jsn_file_path : str):
     with open(input_jsn_file_path, 'r', encoding="utf-8") as r_file:
-        loaded_jsn = json.load(r_file)
+        return json.load(r_file)
+    #     loaded_jsn = json.load(r_file)
     
-    return loaded_jsn.get('carpets',{})
+    # return loaded_jsn.get('carpets',{})
 
 
 def filterCarpetsDatesRange(loaded_jsn: dict, start_time: int, end_time: int):
